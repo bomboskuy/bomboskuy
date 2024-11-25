@@ -11,31 +11,34 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Tabel users
         Schema::create('users', function (Blueprint $table) {
-            $table->id('idUser'); // Mengganti primary key menjadi idUser
-            $table->string('namaUser', 100); // Mengganti "name" menjadi "namaUser"
-            $table->string('email', 100)->unique();
-            $table->string('password', 255);
-            $table->unsignedBigInteger('roleID'); // Tambahkan kolom roleID di sini
-            $table->foreign('roleID')->references('roleID')->on('roles')->onDelete('cascade'); // Rujuk ke kolom roleID di tabel roles
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
-            $table->timestamps();
-        });
-        
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->id('idUser'); // Primary key idUser
+            $table->string('namaUser', 100); // Kolom namaUser
+            $table->string('email', 100)->unique(); // Kolom email dengan constraint unique
+            $table->string('password', 255); // Kolom password
+            $table->unsignedBigInteger('roleID'); // Foreign key roleID
+            $table->foreign('roleID')->references('roleID')->on('roles')->onDelete('cascade'); // Relasi ke tabel roles
+            $table->timestamp('email_verified_at')->nullable(); // Kolom email_verified_at
+            $table->rememberToken(); // Kolom remember_token
+            $table->timestamps(); // Kolom created_at dan updated_at
         });
 
+        // Tabel password_reset_tokens
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary(); // Primary key email
+            $table->string('token'); // Kolom token
+            $table->timestamp('created_at')->nullable(); // Kolom created_at
+        });
+
+        // Tabel sessions
         Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
+            $table->string('id')->primary(); // Primary key id
+            $table->foreignId('user_id')->nullable()->index(); // Foreign key user_id
+            $table->string('ip_address', 45)->nullable(); // Kolom ip_address
+            $table->text('user_agent')->nullable(); // Kolom user_agent
+            $table->longText('payload'); // Kolom payload
+            $table->integer('last_activity')->index(); // Kolom last_activity
         });
     }
 
@@ -44,8 +47,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('sessions'); // Hapus tabel sessions
+        Schema::dropIfExists('password_reset_tokens'); // Hapus tabel password_reset_tokens
+        Schema::dropIfExists('users'); // Hapus tabel users
     }
 };
