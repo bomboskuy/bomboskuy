@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('namaUser', 100); // Mengganti "name" menjadi "namaUser"
             $table->string('email', 100)->unique();
             $table->string('password', 255);
-            $table->foreignId('roleID')->constrained('roles')->onDelete('cascade'); // Tambahkan relasi ke roles
+            $table->unsignedBigInteger('roleID'); // Tambahkan kolom roleID di sini
+            $table->foreign('roleID')->references('roleID')->on('roles')->onDelete('cascade'); // Rujuk ke kolom roleID di tabel roles
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
