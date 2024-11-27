@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 
@@ -17,3 +18,5 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('/login', [LoginController::class, 'login'])->name('login');
