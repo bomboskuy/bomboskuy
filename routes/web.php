@@ -6,13 +6,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;  // Jika menggunakan DashboardController
 use App\Http\Controllers\UserController;       // Pastikan sudah ada controller UserController
 
-Route::prefix('dashboard')
-    ->middleware(['auth', 'admin']) // Gunakan alias 'admin' untuk middleware CheckAdmin
-    ->name('dashboard.')
-    ->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('main'); // Halaman utama dashboard
-        Route::resource('users', UserController::class); // Resource controller untuk users
-    });
+Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(function() {
+    Route::get('/', [DashboardController::class, 'index'])->name('main');  // Untuk halaman dashboard utama
+    
+    // Menambahkan route untuk daftar users
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+});
+
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('login', [LoginController::class, 'login'])->name('login');
