@@ -103,9 +103,10 @@
                     @include('dashboard.layouts.sidebar')
 
                   <div class="pcoded-content">
+                  @yield('content')
                       <!-- Page-header start -->
                       <div class="page-header">
-                        @yield('content')
+
                       </div>
                       <!-- Page-header end -->
                     </div>

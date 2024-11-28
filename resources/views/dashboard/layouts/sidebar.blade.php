@@ -29,47 +29,24 @@
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-        
-        <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Forms &amp; Tables</div>
-        <ul class="pcoded-item pcoded-left-item">
-            <li>
-                <a href="form-elements-component.html" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Form Components</span>
+            
+            <!-- Menu Baru untuk Users (Hanya User List) -->
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-user"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Users</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
-            </li>
-            <li>
-                <a href="bs-basic-table.html" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Basic Table</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-        </ul>
-        
-        <div class="pcoded-navigation-label" data-i18n="nav.category.chart-maps">Chart &amp; Maps</div>
-        <ul class="pcoded-item pcoded-left-item">
-            <li>
-                <a href="chart.html" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Chart</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-            <li>
-                <a href="map-google.html" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Maps</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('dashboard.users.index') }}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                    <span class="pcoded-mtext">Manajemen Users</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
+                <ul class="pcoded-submenu">
+                <li>
+                    <a href="{{ route('dashboard.users.index') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-users"></i></span> <!-- Ikon pengguna -->
+                        <span class="pcoded-mtext">Manajemen Users</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+
+                </ul>
             </li>
         </ul>
     </div>
