@@ -36,7 +36,7 @@ class LoginController extends Controller
         // Cek kredensial dan login
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             // Login berhasil
-            return redirect()->route('layouts.main'); // Redirect ke halaman dashboard setelah login
+            return redirect()->route('dashboard.main'); // Redirect ke halaman dashboard setelah login
         } else {
             // Jika login gagal
             return redirect()->route('login.form')

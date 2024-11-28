@@ -69,6 +69,12 @@
                                     </div>
                                 </div>
                                 <hr/>
+                                <!-- Create Account Link -->
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <p>Don't have an account? <a href="{{ route('register') }}" class="text-primary">Sign Up</a></p>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-10">
                                         <p class="text-inverse text-left m-b-0">Thank you.</p>

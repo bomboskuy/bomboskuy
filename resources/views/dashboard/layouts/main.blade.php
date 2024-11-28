@@ -17,25 +17,25 @@
       <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
       <meta name="author" content="codedthemes" />
       <!-- Favicon icon -->
-      <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
     <!-- waves.css -->
-    <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset('assets/pages/waves/css/waves.min.css') }}" type="text/css" media="all">
       <!-- Required Fremwork -->
-      <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap/css/bootstrap.min.css') }}">
       <!-- waves.css -->
-      <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+      <link rel="stylesheet" href="{{ asset('assets/pages/waves/css/waves.min.css') }}" type="text/css" media="all">
       <!-- themify icon -->
-      <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/icon/themify-icons/themify-icons.css') }}">
       <!-- Font Awesome -->
-      <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/icon/font-awesome/css/font-awesome.min.css') }}">
       <!-- scrollbar.css -->
-      <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.mCustomScrollbar.css') }}">
         <!-- am chart export.css -->
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
       <!-- Style.css -->
-      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
   </head>
 
   <body>
@@ -96,11 +96,11 @@
   <div id="pcoded" class="pcoded">
       <div class="pcoded-overlay-box"></div>
       <div class="pcoded-container navbar-wrapper">
-        @include('layouts.navbar')
+        @include('dashboard.layouts.navbar')
 
           <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
-                    @include('layouts.sidebar')
+                    @include('dashboard.layouts.sidebar')
 
                   <div class="pcoded-content">
                       <!-- Page-header start -->
@@ -123,31 +123,31 @@
             <ul class="iew-download">
                 <li>
                     <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
+                        <img src="{{ asset('assets/images/browser/chrome.png') }}" alt="Chrome">
                         <div>Chrome</div>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
+                        <img src="{{ asset('assets/images/browser/firefox.png') }}" alt="Firefox">
                         <div>Firefox</div>
                     </a>
                 </li>
                 <li>
                     <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
+                        <img src="{{ asset('assets/images/browser/opera.png') }}" alt="Opera">
                         <div>Opera</div>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
+                        <img src="{{ asset('assets/images/browser/safari.png') }}" alt="Safari">
                         <div>Safari</div>
                     </a>
                 </li>
                 <li>
                     <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
+                        <img src="{{ asset('assets/images/browser/ie.png') }}" alt="">
                         <div>IE (9 & above)</div>
                     </a>
                 </li>
@@ -159,35 +159,35 @@
     <!-- Warning Section Ends -->
     
     <!-- Required Jquery -->
-    <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js "></script>
-    <script type="text/javascript" src="assets/js/popper.js/popper.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap/js/bootstrap.min.js "></script>
-    <script type="text/javascript" src="assets/pages/widget/excanvas.js "></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/popper.js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/pages/widget/excanvas.js') }}"></script>
     <!-- waves js -->
-    <script src="assets/pages/waves/js/waves.min.js"></script>
+    <script src="{{ asset('assets/pages/waves/js/waves.min.js') }}"></script>
     <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js "></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
     <!-- modernizr js -->
-    <script type="text/javascript" src="assets/js/modernizr/modernizr.js "></script>
+    <script type="text/javascript" src="{{ asset('assets/js/modernizr/modernizr.js') }}"></script>
     <!-- slimscroll js -->
-    <script type="text/javascript" src="assets/js/SmoothScroll.js"></script>
-    <script src="assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
+    <script type="text/javascript" src="{{ asset('assets/js/SmoothScroll.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <!-- Chart js -->
-    <script type="text/javascript" src="assets/js/chart.js/Chart.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/chart.js/Chart.js') }}"></script>
     <!-- amchart js -->
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-    <script src="assets/pages/widget/amchart/gauge.js"></script>
-    <script src="assets/pages/widget/amchart/serial.js"></script>
-    <script src="assets/pages/widget/amchart/light.js"></script>
-    <script src="assets/pages/widget/amchart/pie.min.js"></script>
+    <script src="{{ asset('assets/pages/widget/amchart/gauge.js') }}"></script>
+    <script src="{{ asset('assets/pages/widget/amchart/serial.js') }}"></script>
+    <script src="{{ asset('assets/pages/widget/amchart/light.js') }}"></script>
+    <script src="{{ asset('assets/pages/widget/amchart/pie.min.js') }}"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
     <!-- menu js -->
-    <script src="assets/js/pcoded.min.js"></script>
-    <script src="assets/js/vertical-layout.min.js "></script>
+    <script src="{{ asset('assets/js/pcoded.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vertical-layout.min.js') }}"></script>
     <!-- custom js -->
-    <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
-    <script type="text/javascript" src="assets/js/script.js "></script>
+    <script type="text/javascript" src="{{ asset('assets/pages/dashboard/custom-dashboard.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 </body>
 
 </html>
