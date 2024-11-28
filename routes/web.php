@@ -3,14 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DashboardController;  // Jika menggunakan DashboardController
-use App\Http\Controllers\UserController;       // Pastikan sudah ada controller UserController
+use App\Http\Controllers\DashboardController;  
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;       
 
 Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('main');  // Untuk halaman dashboard utama
     
-    // Menambahkan route untuk daftar users
     Route::resource('users', UserController::class);
+
+    Route::resource('roles', RoleController::class);
 });
 
 

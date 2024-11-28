@@ -20,6 +20,7 @@ class User extends Authenticatable
         'roleID', // Relasi ke roles
     ];
 
+    
     protected $hidden = [
         'password',
         'remember_token',

@@ -45,7 +45,13 @@
                         <span class="pcoded-mcaret"></span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="{{ route('dashboard.roles.index') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-lock"></i></span>
+                        <span class="pcoded-mtext">Manajemen Roles</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
                 </ul>
             </li>
         </ul>

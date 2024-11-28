@@ -6,76 +6,76 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    // Menampilkan daftar pengguna
     public function index()
     {
-        $users = User::with('role')->get(); // Ambil semua data pengguna beserta data role
-        return view('dashboard.users.index', compact('users')); // Mengarahkan ke view dashboard/users/index
+        // Mengambil semua pengguna dengan relasi role
+        $users = User::with('role')->get();
+        return view('dashboard.users.index', compact('users'));
     }
 
-    // Menampilkan form untuk menambah pengguna
     public function create()
     {
-        $roles = Role::all(); // Ambil semua data role
-        return view('dashboard.users.create', compact('roles')); // Mengarahkan ke view dashboard/users/create
+        // Ambil semua role untuk pilihan pada form
+        $roles = Role::all(); // Ambil data role dari tabel roles
+        return view('dashboard.users.create', compact('roles'));
     }
 
-    // Menyimpan data pengguna baru
     public function store(Request $request)
     {
+        // Validasi input pengguna
         $validated = $request->validate([
-            'namaUser' => 'required|string|max:100',
+            'namaUser' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6|confirmed',
-            'roleID' => 'required|exists:roles,roleID',
+            'password' => 'required|string|min:8',
+            'roleID' => 'required|integer', // Relasi ke Role
         ]);
 
-        $user = User::create([
-            'namaUser' => $validated['namaUser'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'roleID' => $validated['roleID'],
-        ]);
+        // Hash password sebelum disimpan
+        $validated['password'] = Hash::make($validated['password']);
 
-        return redirect()->route('dashboard.users.index')->with('success', 'User created successfully.');
+        // Buat pengguna baru
+        User::create($validated);
+
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('dashboard.users.index')->with('success', 'Pengguna berhasil ditambahkan');
     }
 
-    // Menampilkan form untuk mengedit pengguna
     public function edit(User $user)
     {
-        $roles = Role::all();
-        return view('dashboard.users.edit', compact('user', 'roles')); // Mengarahkan ke view dashboard/users/edit
+        // Ambil semua role untuk pilihan pada form edit
+        $roles = Role::all(); // Ambil data role untuk edit
+        return view('dashboard.users.edit', compact('user', 'roles'));
     }
 
-    // Memperbarui data pengguna
     public function update(Request $request, User $user)
     {
         $validated = $request->validate([
-            'namaUser' => 'required|string|max:100',
-            'email' => 'required|email|unique:users,email,' . $user->idUser,
-            'password' => 'nullable|string|min:6|confirmed',
-            'roleID' => 'required|exists:roles,roleID',
+            'namaUser' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->idUser, // Pastikan menggunakan idUser
+            'password' => 'nullable|string|min:8',
+            'roleID' => 'required|integer',
         ]);
-
-        $user->update([
-            'namaUser' => $validated['namaUser'],
-            'email' => $validated['email'],
-            'password' => $validated['password'] ? Hash::make($validated['password']) : $user->password,
-            'roleID' => $validated['roleID'],
-        ]);
-
-        return redirect()->route('dashboard.users.index')->with('success', 'User updated successfully.');
+    
+        // Jika password diisi, hash password baru
+        if ($request->filled('password')) {
+            $validated['password'] = Hash::make($validated['password']);
+        }
+    
+        // Update data pengguna
+        $user->update($validated);
+    
+        return redirect()->route('dashboard.users.index')->with('success', 'Pengguna berhasil diupdate');
     }
 
-    // Menghapus pengguna
     public function destroy(User $user)
     {
+        // Hapus pengguna
         $user->delete();
 
-        return redirect()->route('dashboard.users.index')->with('success', 'User deleted successfully.');
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('dashboard.users.index')->with('success', 'Pengguna berhasil dihapus');
     }
 }
