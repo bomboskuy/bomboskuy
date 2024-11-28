@@ -10,7 +10,7 @@ Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(functi
     Route::get('/', [DashboardController::class, 'index'])->name('main');  // Untuk halaman dashboard utama
     
     // Menambahkan route untuk daftar users
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::resource('users', UserController::class);
 });
 
 
