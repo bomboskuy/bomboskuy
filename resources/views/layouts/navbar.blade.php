@@ -113,11 +113,14 @@
                                           <i class="ti-lock"></i> Lock Screen
                                       </a>
                                   </li>
-                                  <li class="waves-effect waves-light">
-                                      <a href="auth-normal-sign-in.html">
-                                          <i class="ti-layout-sidebar-left"></i> Logout
-                                      </a>
-                                  </li>
+                                <li class="waves-effect waves-light">
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="waves-effect waves-light btn">
+                                            <i class="ti-layout-sidebar-left"></i> Logout
+                                        </button>
+                                    </form>
+                                </li>
                               </ul>
                           </li>
                       </ul>
