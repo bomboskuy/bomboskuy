@@ -35,3 +35,6 @@ Route::get('/register', function () {
 })->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
+Route::get('/userpage', function () {
+    return view('userpage.layout.main');
+});
