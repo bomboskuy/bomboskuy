@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        // Mengubah nama tabel menjadi 'produk'
+        Schema::create('produk', function (Blueprint $table) {
             $table->id('productID');
             $table->string('namaProduk', 100);
             $table->decimal('harga', 10, 2);
             $table->integer('stok');
+            $table->binary('foto'); // Kolom foto dengan tipe data BLOB (binary)
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -26,6 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        // Menghapus tabel 'produk' pada rollback
+        Schema::dropIfExists('produk');
     }
 };

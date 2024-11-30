@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;      
 use App\Http\Controllers\MenuController; 
+use App\Http\Controllers\ProdukController;
+
 
 Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('main');  // Untuk halaman dashboard utama
@@ -14,6 +16,8 @@ Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(functi
     Route::resource('users', UserController::class);
 
     Route::resource('roles', RoleController::class);
+
+    Route::resource('produk', ProdukController::class);
 });
 
 
