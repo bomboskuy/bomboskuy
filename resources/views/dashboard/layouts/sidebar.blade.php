@@ -57,3 +57,24 @@
         </ul>
     </div>
 </nav>
+
+ <!-- Menu Baru untuk Users (Hanya User List) -->
+ <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-user"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Manajemen menu</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                <li>
+                    <a href="{{ route('menu.index') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa fa-users"></i></span> <!-- Ikon pengguna -->
+                        <span class="pcoded-mtext">Menu</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
