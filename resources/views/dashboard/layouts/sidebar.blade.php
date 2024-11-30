@@ -54,9 +54,7 @@
                 </li>
                 </ul>
             </li>
-        </ul>
-    </div>
-</nav>
+
 
  <!-- Menu Baru untuk Users (Hanya User List) -->
  <li class="pcoded-hasmenu">
