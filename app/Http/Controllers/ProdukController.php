@@ -30,31 +30,30 @@ class ProdukController extends Controller
      * Menyimpan produk yang baru dibuat ke database.
      */
     public function store(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'namaProduk' => 'required|string|max:100',
-            'harga' => 'required|numeric',
-            'stok' => 'required|integer',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+{
+    // Validasi input
+    $request->validate([
+        'namaProduk' => 'required|string|max:100',
+        'harga' => 'required|numeric',
+        'stok' => 'required|integer',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        // Menyimpan data produk
-        $produk = new Produk();
-        $produk->namaProduk = $request->input('namaProduk');
-        $produk->harga = $request->input('harga');
-        $produk->stok = $request->input('stok');
+    $produk = new Produk();
+    $produk->namaProduk = $request->input('namaProduk');
+    $produk->harga = $request->input('harga');
+    $produk->stok = $request->input('stok');
 
-        // Cek apakah ada file gambar dan simpan ke storage
-        if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('produk', 'public');
-            $produk->foto = $fotoPath;
-        }
-
-        $produk->save();
-
-        return redirect()->route('dashboard.produk.index')->with('success', 'Produk berhasil ditambahkan!');
+    if ($request->hasFile('foto')) {
+        $fotoPath = $request->file('foto')->store('produk', 'public');
+        $produk->foto = $fotoPath; // Menyimpan path foto
     }
+
+    $produk->save();
+
+    return redirect()->route('dashboard.produk.index')->with('success', 'Produk berhasil ditambahkan!');
+}
+
 
     /**
      * Menampilkan form untuk mengedit produk.

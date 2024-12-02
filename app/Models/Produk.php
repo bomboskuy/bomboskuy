@@ -31,6 +31,6 @@ class Produk extends Model
      */
     public function getFotoAttribute($value)
     {
-        return base64_encode($value);
+        return $value; // Tidak perlu encode base64 jika ingin mengambil file dari storage
     }
 }

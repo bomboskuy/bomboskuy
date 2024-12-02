@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;      
 use App\Http\Controllers\MenuController; 
 use App\Http\Controllers\ProdukController;
-
+use App\Http\Controllers\UserPageController;
 
 Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('main');  // Untuk halaman dashboard utama
@@ -40,9 +40,7 @@ Route::get('/register', function () {
 })->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-Route::get('/userpage', function () {
-    return view('userpage.layout.main');
-});
+Route::get('/userpage', [UserPageController::class, 'showProducts'])->name('produk.index');
 
 //menu
 Route::get('menus', [MenuController::class, 'index'])->name('menu.index');
