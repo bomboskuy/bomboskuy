@@ -14,13 +14,26 @@
                                 <a href="./index.html"><img src="{{ asset('asset/img/logo.png')}}" alt=""></a>
                             </div>
                             <div class="header__top__right">
-                                <div class="header__top__right__links">
-                                    <a href="#" class="search-switch"><img src="{{ asset('asset/img/icon/search.png')}}" alt=""></a>
-                                    <a href="#"><img src="{{ asset('asset/img/icon/heart.png')}}" alt=""></a>
-                                </div>
-                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="{{ asset('asset/img/icon/cart.png')}}" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                                    <div class="header__top__right__links">
+                                        <a href="#" class="search-switch">
+                                            <img src="{{ asset('asset/img/icon/search.png') }}" alt="" width="20" height="20">
+                                        </a>
+                                        <a href="#">
+                                            <img src="{{ asset('asset/img/icon/heart.png') }}" alt="" width="20" height="20">
+                                        </a>
+                                    </div>
+                                    <div class="header__top__right__cart">
+                                        <a href="{{ route('cart.show') }}">
+                                            <img src="{{ asset('asset/img/icon/cart.png') }}" alt="" width="20" height="20">
+                                            <span>{{ count(session()->get('cart', [])) }}</span> <!-- Menampilkan jumlah item dalam keranjang -->
+                                        </a>
+                                        <div class="cart__price">
+                                            Cart: 
+                                            <span>
+                                                ${{ number_format(session()->get('cart_total', 0), 2) }} <!-- Menampilkan total harga dari session -->
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

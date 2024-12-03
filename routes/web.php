@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MenuController; 
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\CartController;
 
 Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('main');  // Untuk halaman dashboard utama
@@ -50,3 +51,10 @@ Route::get('menus/{menu}/edit', [MenuController::class, 'edit'])->name('menu.edi
 Route::put('menus/{menu}', [MenuController::class, 'update'])->name('menu.update');
 Route::delete('menus/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy');
 Route::post('menus/reorder', [MenuController::class, 'reorder'])->name('menu.reorder');
+
+
+// Menambahkan produk ke keranjang
+Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+Route::get('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart/update/{index}/{change}', [CartController::class, 'updateQuantity'])->name('cart.update');
