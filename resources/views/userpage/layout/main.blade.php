@@ -169,7 +169,7 @@
                             <h6><a href="#">{{ $produk->namaProduk }}</a></h6>
                             <div class="product__item__price">Rp {{ number_format($produk->harga, 0, ',', '.') }}</div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="{{ route('cart.add', $produk->productID) }}" class="add-to-cart">Add to cart</a>
                             </div>
                         </div>
                     </div>
@@ -501,6 +501,23 @@
 <!-- Search End -->
 
 <!-- Js Plugins -->
+<script>
+    $(document).ready(function() {
+        $('.add-to-cart').on('click', function(e) {
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+            
+            // Kirim permintaan ke server untuk menambah item ke keranjang
+            $.get(url, function(response) {
+                alert('Produk berhasil ditambahkan ke keranjang!');
+                // Update jumlah item di header
+                $('#cart-count').text(response.cartCount);
+                $('#cart-total').text(response.cartTotal);
+            });
+        });
+    });
+</script>
 <script src="{{ asset('asset/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{ asset('asset/js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('asset/js/jquery.nice-select.min.js')}}"></script>
@@ -510,6 +527,7 @@
 <script src="{{ asset('asset/js/owl.carousel.min.js')}}"></script>
 <script src="{{ asset('asset/js/jquery.nicescroll.min.js')}}"></script>
 <script src="{{ asset('asset/js/main.js')}}"></script>
+
 </body>
 
 </html>
