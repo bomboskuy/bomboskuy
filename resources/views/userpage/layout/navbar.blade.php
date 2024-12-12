@@ -6,8 +6,7 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                
-                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                                    <li><a href="{{ route('login') }}">Sign in</a> <span class="arrow_carrot-down"></span></li>
                                 </ul>
                             </div>
                             <div class="header__logo">
