@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('roleID'); // Foreign key roleID
             $table->foreign('roleID')->references('roleID')->on('roles')->onDelete('cascade'); // Relasi ke tabel roles
             $table->timestamp('email_verified_at')->nullable(); // Kolom email_verified_at
-            $table->rememberToken(); // Kolom remember_token
+            $table->rememberToken()->nullable(); // Kolom remember_token
             $table->timestamps(); // Kolom created_at dan updated_at
         });
 
