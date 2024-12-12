@@ -7,7 +7,7 @@
     <meta name="keywords" content="Cake, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cake | Template</title>
+    <title>Cake | Bomboskuy</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -469,11 +469,10 @@
             <div class="row">
                 <div class="col-lg-4 col-md-7">
                     <div class="map__inner">
-                        <h6>COlorado</h6>
+                        <h6>Indonesia</h6>
                         <ul>
-                            <li>1000 Lakepoint Dr, Frisco, CO 80443, USA</li>
-                            <li>Sweetcake@support.com</li>
-                            <li>+1 800-786-1000</li>
+                            <li>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115, Indonesia</li>
+                            <li>Bomboskuy.com</li>
                         </ul>
                     </div>
                 </div>
