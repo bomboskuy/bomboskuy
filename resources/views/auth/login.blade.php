@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/178245364.jpeg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
@@ -23,9 +23,6 @@
                 <div class="col-sm-12">
                     <form action="{{ route('login') }}" method="POST" class="md-float-material form-material">
                         @csrf
-                        <div class="text-center">
-                            <img src="assets/images/logo.png" alt="logo.png">
-                        </div>
                         <div class="auth-box card">
                             <div class="card-block">
                                 <div class="row m-b-20">
@@ -73,14 +70,6 @@
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <p>Don't have an account? <a href="{{ route('register') }}" class="text-primary">Sign Up</a></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
                                     </div>
                                 </div>
                             </div>

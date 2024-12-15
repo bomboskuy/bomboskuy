@@ -96,6 +96,24 @@
                     </li>
                 </ul>
             </li>
+            <!-- Setting Menu -->
+             <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <!-- Ganti ikon dengan ikon representatif -->
+                     <span class="pcoded-micon"><i class="fa fa-cog"></i></span>
+                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Setting Menu</span>
+                     <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li>
+                            <a href="{{ route('dashboard.setting_menus.index') }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="fa fa-wrench"></i></span>
+                            <span class="pcoded-mtext">Manajemen Setting Menu</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

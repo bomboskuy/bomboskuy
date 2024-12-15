@@ -10,9 +10,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\OrderController;
+
 
 Route::get('/', [UserPageController::class, 'showProducts'])->name('produk.index');
 
@@ -25,6 +23,8 @@ Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(functi
     Route::resource('roles', RoleController::class);
 
     Route::resource('produk', ProdukController::class);
+
+    Route::resource('setting_menus', SettingMenuController::class);
 });
 
 
