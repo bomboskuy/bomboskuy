@@ -10,6 +10,9 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', [UserPageController::class, 'showProducts'])->name('produk.index');
 
@@ -50,3 +53,15 @@ Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart'])->na
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::get('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/cart/update/{index}/{change}', [CartController::class, 'updateQuantity'])->name('cart.update');
+
+// Routes untuk masing-masing metode pembayaran
+Route::get('/payment/ovo', [PaymentController::class, 'processOvoPayment'])->name('ovo-payment');
+Route::get('/payment/qris', [PaymentController::class, 'processQrisPayment'])->name('qris-payment');
+Route::get('/payment/dana', [PaymentController::class, 'processDanaPayment'])->name('dana-payment');
+Route::get('/payment/bank-transfer', [PaymentController::class, 'processBankTransferPayment'])->name('bank-transfer');
+Route::get('/payment/credit-card', [PaymentController::class, 'processCreditCardPayment'])->name('credit-card-payment');
+
+Route::post('/order/create', [OrderController::class, 'create'])->name('order.create');
+Route::get('/payment/{orderId}', [PaymentController::class, 'showPaymentForm'])->name('payment.showPaymentForm');
+Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.processPayment');
+Route::get('/payment/confirmation/{payment_id}', [PaymentController::class, 'confirmation'])->name('payment.confirmation');

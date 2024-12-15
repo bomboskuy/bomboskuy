@@ -73,13 +73,37 @@
                     <span id="cart-total">Rp {{ number_format($cartTotal, 0, ',', '.') }}</span>
                 </div>
                 <div class="checkout-container">
-                    <a href="#" class="checkout-btn">Checkout</a>
+                    <button onclick="openCheckoutPopup()" class="checkout-btn">Checkout</button>
                 </div>
             </div>
         @else
             <p>Keranjang Anda kosong!</p>
         @endif
     </div>
+
+    <!-- Checkout Popup -->
+    <form action="{{ route('order.create') }}" method="POST">
+    @csrf
+    
+    <!-- Nama Lengkap -->
+    <label for="name">Nama Lengkap:</label>
+    <input type="text" name="name" required>
+    
+    <!-- Nomor Telepon -->
+    <label for="phone">Nomor Telepon:</label>
+    <input type="text" name="phone" required>
+
+    <!-- Menyertakan productId yang ada di session cart -->
+    @foreach(session('cart') as $productId => $item)  <!-- Menggunakan $productId sebagai key -->
+        <input type="hidden" name="product_id[]" value="{{ $productId }}">
+        <p>{{ $item['name'] }} (Rp {{ number_format($item['price'], 0, ',', '.') }})</p> <!-- Menampilkan nama produk -->
+    @endforeach
+
+    <!-- Tombol untuk submit form -->
+    <button type="submit" class="checkout-btn">Order</button>
+</form>
+
+
 
     <!-- Js Plugins -->
     <script src="{{ asset('asset/js/jquery-3.3.1.min.js') }}"></script>
@@ -92,6 +116,7 @@
     <script src="{{ asset('asset/js/main.js') }}"></script>
 
     <script>
+        // Update Cart Quantity
         function updateQuantity(index, change) {
             $.ajax({
                 url: "{{ url('cart/update') }}/" + index + "/" + change,
@@ -106,6 +131,7 @@
             });
         }
 
+        // Product Search
         function searchProducts() {
             const query = document.getElementById('search-input').value.toLowerCase();
             const items = document.querySelectorAll('.cart-item');
@@ -118,6 +144,15 @@
                     item.style.display = 'none';
                 }
             });
+        }
+
+        // Popup Functions
+        function openCheckoutPopup() {
+            document.getElementById("checkout-popup").style.display = "block";
+        }
+
+        function closeCheckoutPopup() {
+            document.getElementById("checkout-popup").style.display = "none";
         }
     </script>
 
@@ -201,99 +236,85 @@
 
         .cart-item-name {
             font-weight: bold;
-            display: block;
+            font-size: 16px;
         }
 
-        .cart-item-price,
-        .cart-item-quantity {
-            display: block;
-            color: #555;
+        .cart-item-price {
+            font-size: 14px;
+            color: #666;
         }
 
         .quantity-controls {
             display: flex;
             align-items: center;
-            margin-left: 15px;
+            margin-left: 10px;
         }
 
         .qty-btn {
             background-color: #f08632;
-            color: white;
+            color: #fff;
             border: none;
             padding: 5px 10px;
-            margin: 0 5px;
             cursor: pointer;
         }
 
         .remove-item {
-            color: #d9534f;
+            color: red;
+            font-size: 14px;
             text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .remove-item:hover {
-            text-decoration: underline;
         }
 
         .cart-total {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
         }
 
         .total-left {
-            font-size: 18px;
             font-weight: bold;
-            color: #555;
-        }
-
-        .checkout-container {
-            margin-top: 10px;
+            font-size: 18px;
         }
 
         .checkout-btn {
             background-color: #f08632;
-            color: #fff;
-            padding: 12px 20px;
+            padding: 10px 20px;
+            border: none;
+            color: white;
             font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
             cursor: pointer;
         }
 
-        .checkout-btn:hover {
-            background-color: #d97d2b;
+        /* Checkout Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
 
-        .cart-container p {
-            text-align: center;
-            font-size: 16px;
-            color: #777;
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
         }
 
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .search-bar input {
-                width: 80%;
-                margin-top: 10px;
-            }
-
-            .cart-item {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .quantity-controls {
-                margin-top: 10px;
-            }
+        .popup-close-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            color: #000;
+            cursor: pointer;
+            float: right;
         }
+
     </style>
 </body>
 </html>

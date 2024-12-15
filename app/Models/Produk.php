@@ -33,4 +33,11 @@ class Produk extends Model
     {
         return $value; // Tidak perlu encode base64 jika ingin mengambil file dari storage
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_product')
+                    ->withPivot('quantity', 'price')
+                    ->withTimestamps();
+    }
 }
