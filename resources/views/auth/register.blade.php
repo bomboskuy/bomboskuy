@@ -18,7 +18,7 @@
       <meta name="author" content="codedthemes" />
       <!-- Favicon icon -->
 
-      <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="assets/images/178245364.jpeg" type="image/x-icon">
       <!-- Google font-->     
       <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
       <!-- Required Fremwork -->
@@ -100,9 +100,6 @@
                     
                         <form class="md-float-material form-material" action="{{ route('register') }}" method="POST">>
                             @csrf
-                            <div class="text-center">
-                                <img src="assets/images/logo.png" alt="logo.png">
-                            </div>
                             <div class="auth-box card">
                                 <div class="card-block">
                                     <div class="row m-b-20">
@@ -136,20 +133,11 @@
                                         </div>
                                     </div>
                                     <div class="row m-t-25 text-left">
-                                        <div class="col-12">
-                                                <small>Sudah punya akun? 
-                                                    <a href="/login" class="text-left f-w-600">Login</a> </small>
-                                        </div>
+                                    <div class="col-md-12 text-center">
+                                        <p>Already have an account? <a href="{{ route('login') }}" class="text-primary">Sign In</a></p>
+                                    </div>
                                     </div>
                                     <hr/>
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </form>
