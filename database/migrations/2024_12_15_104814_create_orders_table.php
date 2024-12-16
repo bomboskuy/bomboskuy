@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('name'); // Nama pembeli
             $table->string('phone'); // Nomor telepon pembeli
             $table->unsignedBigInteger('productID'); // ID produk yang dipesan
+            $table->integer('qty');
+            $table->bigInteger('total_price');
             $table->enum('status', ['processed', 'completed'])->default('processed'); // Status pesanan
             $table->timestamps(); // Waktu dibuat dan diupdate
-        }); 
+        });  
 
         // Menambahkan foreign key untuk menghubungkan dengan tabel products
         Schema::table('orders', function (Blueprint $table) {

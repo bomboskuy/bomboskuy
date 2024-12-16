@@ -18,5 +18,19 @@ class RolesTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        DB::table('roles')->insert([
+            'roleID' => 2,
+            'namaRole' => 'Karyawan',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('roles')->insert([
+            'roleID' => 3,
+            'namaRole' => 'Customer',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
