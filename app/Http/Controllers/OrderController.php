@@ -19,18 +19,24 @@ class OrderController extends Controller
         'product_id.*' => 'integer|exists:produk,productID', // Validasi setiap productID
     ]);
 
-    // Loop melalui setiap product_id dan buat order terpisah
+    $orderIds = [];
+
+    // Membuat order untuk setiap produk
     foreach ($validated['product_id'] as $productID) {
-        Order::create([
+        $order = Order::create([
             'name' => $validated['name'],
             'phone' => $validated['phone'],
             'productID' => $productID, // Simpan setiap productID
             'status' => 'processed',   // Status order
         ]);
+        $orderIds[] = $order->id; // Simpan ID order
     }
 
-    
-    return redirect()->route('payment.showPaymentForm')->with('success', 'Order berhasil dibuat!');
+    // Redirect ke halaman dengan pesan berhasil dan ID order terakhir
+    return redirect()->route('cart.show')->with([
+        'success' => 'Order berhasil dibuat!',
+        'orderId' => end($orderIds), // Kirimkan ID order terakhir
+    ]);
 }
 
 }

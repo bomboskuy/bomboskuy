@@ -48,6 +48,24 @@
 
     <!-- Cart Section -->
     <div class="cart-container">
+         <!-- Tampilkan pesan berhasil -->
+         @if(session('success'))
+    <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <button onclick="closeSuccessPopup()" class="popup-close-btn">&times;</button>
+                        <div class="checkmark-container">
+                <div class="checkmark-circle">
+                    <div class="checkmark-stem"></div>
+                    <div class="checkmark-kick"></div>
+                </div>
+            </div>
+            <h3>Berhasil!</h3>
+            <p>{{ session('success') }}</p>
+            <a href="#" class="btn btn-primary">Lanjutkan ke Pembayaran</a>
+        </div>
+    </div>
+    @endif
+
         @if(session()->has('cart') && count(session('cart')) > 0)
             <ul class="cart-items" id="cart-items">
                 @foreach($cart as $index => $item)
@@ -81,28 +99,43 @@
         @endif
     </div>
 
-    <!-- Checkout Popup -->
-    <form action="{{ route('order.create') }}" method="POST">
-    @csrf
-    
-    <!-- Nama Lengkap -->
-    <label for="name">Nama Lengkap:</label>
-    <input type="text" name="name" required>
-    
-    <!-- Nomor Telepon -->
-    <label for="phone">Nomor Telepon:</label>
-    <input type="text" name="phone" required>
+   <!-- Checkout Popup -->
+<div id="checkout-popup" class="popup">
+    <div class="popup-content">
+        <button onclick="closeCheckoutPopup()" class="popup-close-btn">&times;</button>
+        <h3 class="popup-title">Checkout</h3>
 
-    <!-- Menyertakan productId yang ada di session cart -->
-    @foreach(session('cart') as $productId => $item)  <!-- Menggunakan $productId sebagai key -->
-        <input type="hidden" name="product_id[]" value="{{ $productId }}">
-        <p>{{ $item['name'] }} (Rp {{ number_format($item['price'], 0, ',', '.') }})</p> <!-- Menampilkan nama produk -->
-    @endforeach
+        <form action="{{ route('order.create') }}" method="POST">
+            @csrf
+            
+            <!-- Nama Lengkap -->
+            <div class="form-group">
+                <label for="name">Nama Lengkap:</label>
+                <input type="text" name="name" id="name" class="form-control" required>
+            </div>
+            
+            <!-- Nomor Telepon -->
+            <div class="form-group">
+                <label for="phone">Nomor Telepon:</label>
+                <input type="text" name="phone" id="phone" class="form-control" required>
+            </div>
+            
+            <!-- Produk yang Dipesan -->
+            <div class="form-group">
+                <h4>Produk yang Dipesan:</h4>
+                @foreach(session('cart') as $productId => $item)
+                    <input type="hidden" name="product_id[]" value="{{ $productId }}">
+                    <p>{{ $item['name'] }} (Rp {{ number_format($item['price'], 0, ',', '.') }})</p>
+                @endforeach
+            </div>
 
-    <!-- Tombol untuk submit form -->
-    <button type="submit" class="checkout-btn">Order</button>
-</form>
-
+            <!-- Tombol Submit -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Order</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 
     <!-- Js Plugins -->
@@ -155,6 +188,39 @@
             document.getElementById("checkout-popup").style.display = "none";
         }
     </script>
+
+    
+<script>
+function openCheckoutPopup() {
+    document.getElementById('checkout-popup').style.display = 'flex'; /* Tampilkan popup */
+}
+
+function closeCheckoutPopup() {
+    document.getElementById('checkout-popup').style.display = 'none'; /* Sembunyikan popup */
+}
+</script>
+<script>
+        document.getElementById('success-popup').style.display = 'flex';
+        function closeSuccessPopup() {
+            document.getElementById('success-popup').style.display = 'none';
+        }
+    </script>
+    
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('success-popup');
+    if (popup) {
+        popup.style.display = 'flex';
+        setTimeout(() => {
+            const checkmarkCircle = document.querySelector('.checkmark-circle');
+            checkmarkCircle.classList.add('animate');
+        }, 200); // Delay sedikit untuk memberikan efek
+    }
+});
+</script>
+
+
 
     <style>
         /* Header Section */
@@ -314,6 +380,175 @@
             cursor: pointer;
             float: right;
         }
+
+/* Popup Overlay */
+.popup {
+    display: none; /* Awalnya tersembunyi */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Latar belakang gelap */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Content */
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%; /* Responsif */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+/* Popup Title */
+.popup-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Close Button */
+.popup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #f08632;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #d97d2b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popup-content {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .popup-title {
+        font-size: 20px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Styling Checkmark */
+/* Styling Checkmark */
+.checkmark-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkmark-circle {
+    width: 80px;
+    height: 80px;
+    border: 4px solid #FFA500; /* Warna oranye */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: pop 0.3s ease-out;
+    background-color: #fff; /* Warna latar */
+}
+
+.checkmark-stem {
+    width: 5px;
+    height: 30px;
+    background-color: #FFA500; /* Warna oranye */
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transform-origin: bottom;
+    animation: draw-stem 0.5s ease-out forwards;
+}
+
+.checkmark-kick {
+    width: 5px;
+    height: 15px;
+    background-color: #FFA500; /* Warna oranye */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transform-origin: bottom;
+    animation: draw-kick 0.5s ease-out forwards;
+}
+
+/* Animasi Lingkaran */
+@keyframes pop {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animasi Garis Checkmark */
+@keyframes draw-stem {
+    from {
+        height: 0;
+    }
+    to {
+        height: 30px;
+    }
+}
+
+@keyframes draw-kick {
+    from {
+        height: 0;
+    }
+    to {
+        height: 15px;
+    }
+}
 
     </style>
 </body>

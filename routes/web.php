@@ -10,6 +10,10 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserPageController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SettingMenuController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderController;
 
 
 Route::get('/', [UserPageController::class, 'showProducts'])->name('produk.index');
@@ -62,6 +66,6 @@ Route::get('/payment/bank-transfer', [PaymentController::class, 'processBankTran
 Route::get('/payment/credit-card', [PaymentController::class, 'processCreditCardPayment'])->name('credit-card-payment');
 
 Route::post('/order/create', [OrderController::class, 'create'])->name('order.create');
-Route::get('/payment/{orderId}', [PaymentController::class, 'showPaymentForm'])->name('payment.showPaymentForm');
+Route::get('userepage/layout/payment/{id}', [PaymentController::class, 'showPaymentForm'])->name('userpage.layout.payment.showPaymentForm');
 Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.processPayment');
 Route::get('/payment/confirmation/{payment_id}', [PaymentController::class, 'confirmation'])->name('payment.confirmation');

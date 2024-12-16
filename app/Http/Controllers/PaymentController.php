@@ -8,20 +8,25 @@ use App\Models\Produk;
 
 class PaymentController extends Controller
 {
-    public function showPaymentForm($orderId)
-{
-    // Ambil order berdasarkan ID
-    $order = Order::with('produk')->find($orderId);
-
-    // Jika order tidak ditemukan, tampilkan error
-    if (!$order) {
-        return redirect()->back()->with('error', 'Order tidak ditemukan!');
+    public function showPaymentForm($id)
+    {
+        // Validasi bahwa $id adalah angka
+        if (!is_numeric($id)) {
+            return redirect()->back()->with('error', 'ID pesanan tidak valid.');
+        }
+    
+        // Ambil data order berdasarkan ID
+        $order = Order::with('produk')->find($id);
+    
+        // Jika order tidak ditemukan
+        if (!$order) {
+            return redirect()->back()->with('error', 'Pesanan tidak ditemukan.');
+        }
+    
+        // Tampilkan view pembayaran
+        return view('userpage.layout.payment', compact('order'));
     }
-
-    // Tampilkan view pembayaran dengan data order
-    return redirect()->route('payment.showPaymentForm', ['orderId' => $order->id]);
-
-}
+    
 
 
     // Memproses pembayaran

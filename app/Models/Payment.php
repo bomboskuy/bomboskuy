@@ -11,6 +11,6 @@ class Payment extends Model
     // Relasi ke order
     public function order()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class, 'order_id', 'id'); // Default: 'order_id' di tabel `payments`
     }
 }
