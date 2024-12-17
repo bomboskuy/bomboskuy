@@ -15,7 +15,9 @@ class Order extends Model
         'name',
         'phone',
         'productID',
-        'status', // Tambahkan status atau atribut lainnya jika diperlukan
+        'quantity',
+        'total_price',
+        'status',
     ];
 
     // Relasi ke produk

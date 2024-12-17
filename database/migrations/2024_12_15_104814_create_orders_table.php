@@ -4,40 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateOrdersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id(); // ID untuk setiap pesanan
-            $table->string('name'); // Nama pembeli
-            $table->string('phone'); // Nomor telepon pembeli
-            $table->unsignedBigInteger('productID'); // ID produk yang dipesan
-            $table->integer('qty');
-            $table->bigInteger('total_price');
-            $table->enum('status', ['processed', 'completed'])->default('processed'); // Status pesanan
-            $table->timestamps(); // Waktu dibuat dan diupdate
-        });  
+            $table->id();
+            $table->string('name');
+            $table->string('phone');
+            $table->foreignId('productID')->constrained('produk'); // Produk yang dipesan
+            $table->integer('quantity');
+            $table->decimal('total_price', 10, 2);
+            $table->string('status');
+            $table->timestamps();
 
-        // Menambahkan foreign key untuk menghubungkan dengan tabel products
-        Schema::table('orders', function (Blueprint $table) {
             $table->foreign('productID')->references('productID')->on('produk')->onDelete('cascade');
         });
     }
 
-    /**
-     * Membatalkan migrasi
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropForeign(['productID']);
-        });
         Schema::dropIfExists('orders');
     }
-};
+}

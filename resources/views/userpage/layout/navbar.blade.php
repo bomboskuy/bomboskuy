@@ -10,7 +10,7 @@
                                 </ul>
                             </div>
                             <div class="header__logo">
-                                <a href="./index.html"><img src="{{ asset('asset/img/logo.png')}}" alt=""></a>
+                                <a href=""><img src="{{ asset('asset/img/bomboskuy.jpg')}}" alt="" width="75" height="75"></a>
                             </div>
                             <div class="header__top__right">
                                     <div class="header__top__right__links">
@@ -29,7 +29,7 @@
                                         <div class="cart__price">
                                             Cart: 
                                             <span>
-                                                ${{ number_format(session()->get('cart_total', 0), 2) }} <!-- Menampilkan total harga dari session -->
+                                                Rp{{ number_format(session()->get('cart_total', 0), 2) }} <!-- Menampilkan total harga dari session -->
                                             </span>
                                         </div>
                                     </div>

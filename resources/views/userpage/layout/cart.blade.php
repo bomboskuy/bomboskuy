@@ -24,6 +24,13 @@
     <link rel="stylesheet" href="{{ asset('asset/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('asset/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}" type="text/css">
+
+
+    <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
+    <script type="text/javascript"
+    src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="{{config('midtrans.client_key')}}"></script>
+    <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
 </head>
 
 <body>
@@ -107,7 +114,6 @@
 
         <form action="{{ route('order.create') }}" method="POST">
             @csrf
-            
             <!-- Nama Lengkap -->
             <div class="form-group">
                 <label for="name">Nama Lengkap:</label>
@@ -119,23 +125,68 @@
                 <label for="phone">Nomor Telepon:</label>
                 <input type="text" name="phone" id="phone" class="form-control" required>
             </div>
-            
-            <!-- Produk yang Dipesan -->
-            <div class="form-group">
+
+             <!-- Produk yang Dipesan -->
+             <div class="form-group">
                 <h4>Produk yang Dipesan:</h4>
                 @foreach(session('cart') as $productId => $item)
                     <input type="hidden" name="product_id[]" value="{{ $productId }}">
-                    <p>{{ $item['name'] }} (Rp {{ number_format($item['price'], 0, ',', '.') }})</p>
+                    <input type="hidden" name="quantity[]" value="{{ $item['quantity'] }}">
+                    <p>{{ $item['quantity'] }} x {{ $item['name'] }} (@Rp {{ number_format($item['price'], 0, ',', '.') }})</p>
                 @endforeach
+            </div>
+
+            
+            <div class="total-left">
+                <strong>Total:</strong>
+                <span id="cart-total">Rp {{ number_format($cartTotal, 0, ',', '.') }}</span>
             </div>
 
             <!-- Tombol Submit -->
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Order</button>
+                <button type="submit" class="btn btn-primary" id="pay-button">Order</button>
             </div>
         </form>
     </div>
 </div>
+
+<style>
+    #snap-container {
+        width: 300px;      /* Sesuaikan dengan ukuran lebar yang diinginkan */
+        height: 450px;     /* Sesuaikan dengan ukuran tinggi yang diinginkan */
+        margin: 0 auto;    /* Agar tetap terpusat */
+    }
+</style>
+
+
+      {{-- MIDTRANS SCRIPT --}}
+<script type="text/javascript">
+    // Check if $snapToken is defined and not empty
+    @if(isset($snapToken) && $snapToken)
+        window.snap.embed('{{$snapToken}}', {
+                embedId: 'snap-container',
+                onSuccess: function (result) {
+                   
+                },
+                onPending: function (result) {
+                    /* You may add your own implementation here */
+                    alert("waiting for your payment!"); console.log(result);
+                },
+                onError: function (result) {
+                    /* You may add your own implementation here */
+                    alert("payment failed!"); console.log(result);
+                },
+                onClose: function () {
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
+            });
+    @else
+        console.log('SnapToken is not defined or is empty.');
+    @endif
+</script>
+
+
 
 
     <!-- Js Plugins -->
@@ -199,24 +250,25 @@ function closeCheckoutPopup() {
     document.getElementById('checkout-popup').style.display = 'none'; /* Sembunyikan popup */
 }
 </script>
-<script>
+
+{{-- <script>
         document.getElementById('success-popup').style.display = 'flex';
         function closeSuccessPopup() {
             document.getElementById('success-popup').style.display = 'none';
         }
     </script>
-    
+     --}}
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const popup = document.getElementById('success-popup');
-    if (popup) {
-        popup.style.display = 'flex';
-        setTimeout(() => {
-            const checkmarkCircle = document.querySelector('.checkmark-circle');
-            checkmarkCircle.classList.add('animate');
-        }, 200); // Delay sedikit untuk memberikan efek
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('success-popup');
+        if (popup) {
+            popup.style.display = 'flex';
+            setTimeout(() => {
+                const checkmarkCircle = document.querySelector('.checkmark-circle');
+                checkmarkCircle.classList.add('animate');
+            }, 200); // Delay sedikit untuk memberikan efek
+        }
 });
 </script>
 
