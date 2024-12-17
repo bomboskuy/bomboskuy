@@ -7,13 +7,14 @@
     <meta name="keywords" content="Cake, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cake | Bomboskuy</title>
+    <title> | Bomboskuy</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
+    <link rel="icon" href="assets/images/178245364.jpeg" type="image/x-icon">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css')}}" type="text/css">
@@ -469,7 +470,7 @@
             </div>
         </div>
         <div class="map__iframe">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10784.188505644011!2d19.053119335158936!3d47.48899529453826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1543907528304" height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15830.873003480887!2d112.7572095211792!3d-7.272867290581779!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1734469692938!5m2!1sid!2sid" height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
     </div>
     <!-- Map End -->

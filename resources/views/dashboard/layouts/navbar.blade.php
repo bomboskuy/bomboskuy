@@ -16,7 +16,7 @@
                 </div>
             </div>
             <a href="index.html">
-                <img class="img-fluid" src="{{ asset('assets/images/logo.png') }}" alt="Theme-Logo" />
+                <img class="img-fluid" src="{{ asset('asset/img/nobg.png') }}" width="80" height="80" alt="Theme-Logo" />
             </a>
             <a class="mobile-options waves-effect waves-light">
                 <i class="ti-more"></i>
@@ -88,8 +88,8 @@
                 </li>
                 <li class="user-profile header-notification">
                     <a href="#!" class="waves-effect waves-light">
-                        <img src="{{ asset('assets/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
-                        <span>John Doe</span>
+                        <img src="{{ asset('asset/img/bomboskuy.jpg') }}" class="img-radius" alt="User-Profile-Image">
+                        <span>Admin</span>
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="show-notification profile-notification">

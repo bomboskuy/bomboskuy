@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Log;
+use Midtrans\Notification;
 
 use Midtrans\Config;
 use Midtrans\Snap;
@@ -97,4 +98,70 @@ class OrderController extends Controller
     //         'orderId' => end($orderIds), // Kirimkan ID order terakhir
     //     ]);
     }
+
+    public function midtransNotification(Request $request)
+{
+    $notification = new Notification();
+
+    // Dapatkan status transaksi dari Midtrans
+    $status = $notification->transaction_status;
+    $orderId = $notification->order_id;
+
+    // Ambil data order berdasarkan order_id yang diterima dari Midtrans
+    $order = Order::findOrFail($orderId);
+
+    // Periksa status transaksi
+    if ($status == 'capture' || $status == 'settlement') {
+        // Pembayaran berhasil, ubah status pesanan menjadi 'paid'
+        $order->status = 'paid';
+        $order->save();
+
+        // Kurangi stok produk berdasarkan jumlah yang dibeli
+        foreach ($order->produk as $product) {
+            $produk = Produk::find($product->productID);
+            $produk->stok -= $product->quantity; // Kurangi stok produk
+            $produk->save();
+        }
+
+        // Kirim ke halaman struk atau riwayat pembelian
+        return redirect()->route('userpage.layout.receipt', ['order' => $order]);
+    } else {
+        // Jika transaksi gagal atau status lainnya
+        Log::info("Transaksi gagal untuk order_id: {$orderId}");
+        return response()->json(['message' => 'Pembayaran gagal'], 400);
+    }
+}
+
+
+public function receipt(Order $order)
+{
+    // Mendapatkan detail produk untuk pesanan
+    $orderDetails = $order->produk()->get()->map(function ($product) use ($order) {
+        // Mengambil quantity dari pivot
+        $quantity = $product->pivot->quantity;
+        return [
+            'name' => $product->name,
+            'quantity' => $quantity,
+            'price' => $product->harga,
+            'total' => $product->harga * $quantity,
+        ];
+    });
+
+    // Total harga untuk pesanan
+    $totalPrice = $order->total_price;
+
+    return view('userpage.layout.receipt', compact('order', 'orderDetails', 'totalPrice'));
+}
+
+public function confirmPayment(Order $order)
+{
+    // Logika konfirmasi pembayaran
+    $order->update([
+        'status' => 'paid',
+        'paid_at' => now(),
+    ]);
+    
+    // ...
+}
+
 }

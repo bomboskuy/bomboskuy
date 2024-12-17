@@ -33,6 +33,7 @@
       <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <link rel="icon" href="assets/images/178245364.jpeg" type="image/x-icon">
   </head>
 
   <body themebg-pattern="theme1">

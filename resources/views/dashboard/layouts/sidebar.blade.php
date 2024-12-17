@@ -1,3 +1,4 @@
+
 <nav class="pcoded-navbar">
     <div class="sidebar_toggle">
         <a href="#"><i class="icon-close icons"></i></a>
@@ -6,22 +7,12 @@
         <!-- User Profile Section -->
         <div class="">
             <div class="main-menu-header">
-                <img class="img-80 img-radius" src="{{ asset('assets/images/avatar-4.jpg') }}" alt="User-Profile-Image">
+
                 <div class="user-details">
-                    <span id="more-details">John Doe<i class="fa fa-caret-down"></i></span>
+                    <span id="more-details"></span>
                 </div>
             </div>
-        
-            <div class="main-menu-content">
-                <ul>
-                    <li class="more-details">
-                        <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>
-                        <a href="#!"><i class="ti-settings"></i>Settings</a>
-                        <a href="auth-normal-sign-in.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    
         
         <!-- Layout Category -->
         <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Layout</div>
@@ -66,12 +57,18 @@
                     <span class="pcoded-mtext">Manajemen Produk</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
-            </li>
-             
+            </li>          
             <li>
                 <a href="{{ route('dashboard.setting_menus.index') }}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="fa fa-wrench"></i></span>
                     <span class="pcoded-mtext">Manajemen Setting Menu</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('produk.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class='fa fa-money'></i></span>
+                    <span class="pcoded-mtext">Landing Page</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>

@@ -36,6 +36,9 @@
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+      <link rel="icon" href="assets/images/178245364.jpeg" type="image/x-icon">
+
+      <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   </head>
 
   <body>
@@ -165,6 +168,7 @@
     <script type="text/javascript" src="{{ asset('assets/js/popper.js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/bootstrap/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/pages/widget/excanvas.js') }}"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <!-- waves js -->
     <script src="{{ asset('assets/pages/waves/js/waves.min.js') }}"></script>
     <!-- jquery slimscroll js -->

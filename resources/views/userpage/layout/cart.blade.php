@@ -12,6 +12,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/178245364.jpeg" type="image/x-icon">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}" type="text/css">
@@ -166,7 +167,14 @@
         window.snap.embed('{{$snapToken}}', {
                 embedId: 'snap-container',
                 onSuccess: function (result) {
-                   
+                    // Ambil order_id dari hasil pembayaran
+                    const orderId = result.order_id;
+
+                    // Redirect pengguna ke halaman struk pembayaran
+                    // window.location.href = '/order/receipt/' + orderId;
+                    
+                    // Redirect pengguna ke halaman baru yang membuka struk pembayaran
+                    window.open('/order/receipt/' + orderId, '_blank');
                 },
                 onPending: function (result) {
                     /* You may add your own implementation here */

@@ -10,7 +10,7 @@
                                 </ul>
                             </div>
                             <div class="header__logo">
-                                <a href=""><img src="{{ asset('asset/img/bomboskuy.jpg')}}" alt="" width="75" height="75"></a>
+                                <a href="https://www.instagram.com/bomboskuy/"><img src="{{ asset('asset/img/nobg.png')}}" alt="" width="90" height="90" ></a>
                             </div>
                             <div class="header__top__right">
                                     <div class="header__top__right__links">
