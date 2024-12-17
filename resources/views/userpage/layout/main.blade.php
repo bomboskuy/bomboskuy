@@ -63,7 +63,8 @@
 
     <!-- About Section Begin -->
     <section class="about spad">
-        <div class="container">
+       
+        <div id="about" class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="about__text">
@@ -74,6 +75,7 @@
                         <p>Toko Roti Bomboloni menyajikan roti bomboloni dengan beragam varian rasa yang lezat dan menggugah selera. Setiap roti dibuat dengan bahan berkualitas tinggi dan diproses dengan penuh perhatian untuk menghasilkan rasa yang lembut dan empuk. Nikmati pilihan rasa klasik seperti Cokelat, Vanilla, dan Karamel, hingga rasa inovatif seperti Matcha dan Keju Asin. Kami berkomitmen untuk memberikan pengalaman rasa yang memuaskan di setiap gigitan!.</p>
                     </div>
                 </div>
+
                 <div class="col-lg-6 col-md-6">
                     <div class="about__bar">
                         <div class="about__bar__item">
@@ -153,7 +155,7 @@
 
     <!-- Product Section Begin -->
     <section class="product spad">
-    <div class="container">
+    <div id="shop" class="container">
         <div class="row">
             @foreach($produks as $produk)
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -184,7 +186,7 @@
 
     <!-- Team Section Begin -->
     <section class="team spad">
-        <div class="container">
+    <div id="team" class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-7 col-sm-7">
                     <div class="section-title">
@@ -223,7 +225,7 @@
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.instagram.com/ahlulmff_"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
                             </div>
                         </div>
@@ -237,7 +239,7 @@
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.instagram.com/akbarzjy_"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
                             </div>
                         </div>
@@ -250,7 +252,7 @@
 
     <!-- Testimonial Section Begin -->
     <section class="testimonial spad">
-        <div class="container">
+    <div id="review" class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-title">

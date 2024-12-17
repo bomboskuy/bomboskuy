@@ -36,84 +36,45 @@
             </li>
             
             <!-- User Management Menu -->
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-user"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Users</span>
+            <li>
+                <a href="{{ route('dashboard.users.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="fa fa-users"></i></span> <!-- Ikon pengguna -->
+                    <span class="pcoded-mtext">Manajemen Users</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
-                <ul class="pcoded-submenu">
-                    <li>
-                        <a href="{{ route('dashboard.users.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="fa fa-users"></i></span> <!-- Ikon pengguna -->
-                            <span class="pcoded-mtext">Manajemen Users</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('dashboard.roles.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-lock"></i></span>
-                            <span class="pcoded-mtext">Manajemen Roles</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                </ul>
             </li>
-
-            <!-- Menu Management -->
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-menu-alt"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Manajemen Menu</span>
+            <li>
+                <a href="{{ route('dashboard.roles.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-lock"></i></span>
+                    <span class="pcoded-mtext">Manajemen Roles</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
-                <ul class="pcoded-submenu">
-                    <li>
-                        <a href="{{ route('menu.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="fa fa-bars"></i></span> <!-- Ikon menu -->
-                            <span class="pcoded-mtext">Menu</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <!-- Tambahkan item menu lainnya jika ada -->
-                </ul>
+            </li>
+            <!-- Menu Management -->
+            <li>
+                <a href="{{ route('menu.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="fa fa-bars"></i></span> <!-- Ikon menu -->
+                    <span class="pcoded-mtext">Menu</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
             </li>
 
             <!-- Produk Menu -->
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-package"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Produk</span>
+            <li>
+                <a href="{{ route('dashboard.produk.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="fa fa-cogs"></i></span>
+                    <span class="pcoded-mtext">Manajemen Produk</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
-                <ul class="pcoded-submenu">
-                    <li>
-                        <a href="{{ route('dashboard.produk.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="fa fa-cogs"></i></span>
-                            <span class="pcoded-mtext">Manajemen Produk</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                </ul>
             </li>
-            <!-- Setting Menu -->
-             <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <!-- Ganti ikon dengan ikon representatif -->
-                     <span class="pcoded-micon"><i class="fa fa-cog"></i></span>
-                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Setting Menu</span>
-                     <span class="pcoded-mcaret"></span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li>
-                            <a href="{{ route('dashboard.setting_menus.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="fa fa-wrench"></i></span>
-                            <span class="pcoded-mtext">Manajemen Setting Menu</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                </ul>
+             
+            <li>
+                <a href="{{ route('dashboard.setting_menus.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="fa fa-wrench"></i></span>
+                    <span class="pcoded-mtext">Manajemen Setting Menu</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
             </li>
-        </ul>
+        </ul>    
     </div>
 </nav>

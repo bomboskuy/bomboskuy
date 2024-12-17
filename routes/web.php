@@ -14,6 +14,7 @@ use App\Http\Controllers\SettingMenuController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RiviewController;
 
 
 Route::get('/', [UserPageController::class, 'showProducts'])->name('produk.index');
@@ -69,3 +70,5 @@ Route::post('/order/create', [OrderController::class, 'create'])->name('order.cr
 Route::get('userepage/layout/payment/{id}', [PaymentController::class, 'showPaymentForm'])->name('userpage.layout.payment.showPaymentForm');
 Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.processPayment');
 Route::get('/payment/confirmation/{payment_id}', [PaymentController::class, 'confirmation'])->name('payment.confirmation');
+
+Route::get('/userpage/layout/review', [RiviewController::class, 'index'])->name('review.index');
