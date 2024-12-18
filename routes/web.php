@@ -15,6 +15,8 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RiviewController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ShopController;
 
 
 Route::get('/', [UserPageController::class, 'showProducts'])->name('produk.index');
@@ -67,4 +69,11 @@ Route::get('order/receipt/{order}', [OrderController::class, 'receipt'])->name('
 
 
 
+
+Route::get('/feedback/index', [OrderController::class, 'history'])->name('feedback.index');
+Route::get('/feedback/{orderId}/create', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::post('/feedback/{orderId}/store', [FeedbackController::class, 'store'])->name('feedback.store');
+Route::get('/shop/index', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/shop/cart', [ShopController::class, 'cart'])->name('shop.cart');
+Route::get('/shop/checkout', [ShopController::class, 'checkout'])->name('shop.checkout');
 Route::get('/userpage/layout/review', [RiviewController::class, 'index'])->name('review.index');

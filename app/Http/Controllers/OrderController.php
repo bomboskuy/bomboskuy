@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Produk;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Log;
 use Midtrans\Notification;
 
@@ -163,5 +164,12 @@ public function confirmPayment(Order $order)
     
     // ...
 }
+
+public function history()
+    {
+        // Ambil semua pesanan milik user yang login
+        $orders = Order::all(); // Bisa disesuaikan jika ada filter lain
+        return view('feedback.index', compact('orders'));
+    }
 
 }

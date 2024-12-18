@@ -14,25 +14,30 @@
             <h2>Kirimkan <span class="highlight">Feedback</span> Anda! 😊</h2>
             <p>Beri tahu kami bagaimana pengalaman Anda dan berikan komentar.</p>
 
-            <!-- Star Rating -->
-            <div class="star-rating">
-                <input type="radio" name="star" id="star5" value="5">
-                <label for="star5" title="Sangat Baik">★</label>
-                <input type="radio" name="star" id="star4" value="4">
-                <label for="star4" title="Baik">★</label>
-                <input type="radio" name="star" id="star3" value="3">
-                <label for="star3" title="Cukup">★</label>
-                <input type="radio" name="star" id="star2" value="2">
-                <label for="star2" title="Kurang">★</label>
-                <input type="radio" name="star" id="star1" value="1">
-                <label for="star1" title="Buruk">★</label>
-            </div>
+            <!-- Form untuk mengirim feedback -->
+            <form action="{{ route('feedback.store', $order->id) }}" method="POST">
+                @csrf <!-- Untuk token CSRF -->
 
-            <!-- Feedback Text -->
-            <textarea placeholder="Tuliskan saran atau masukan Anda..." rows="4"></textarea>
+                <!-- Star Rating -->
+                <div class="star-rating">
+                    <input type="radio" name="rating" id="star5" value="5">
+                    <label for="star5" title="Sangat Baik">★</label>
+                    <input type="radio" name="rating" id="star4" value="4">
+                    <label for="star4" title="Baik">★</label>
+                    <input type="radio" name="rating" id="star3" value="3">
+                    <label for="star3" title="Cukup">★</label>
+                    <input type="radio" name="rating" id="star2" value="2">
+                    <label for="star2" title="Kurang">★</label>
+                    <input type="radio" name="rating" id="star1" value="1">
+                    <label for="star1" title="Buruk">★</label>
+                </div>
 
-            <!-- Submit Button -->
-            <button class="submit-btn">KIRIM FEEDBACK</button>
+                <!-- Feedback Text -->
+                <textarea name="review" placeholder="Tuliskan saran atau masukan Anda..." rows="4"></textarea>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">KIRIM FEEDBACK</button>
+            </form>
         </div>
     </div>
 </body>

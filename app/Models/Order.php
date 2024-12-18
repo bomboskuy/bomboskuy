@@ -35,5 +35,9 @@ class Order extends Model
         return $this->hasOne(Payment::class);
     }
 
-    
+    public function feedback()
+{
+    return $this->hasOne(Feedback::class);
+}
+
 }

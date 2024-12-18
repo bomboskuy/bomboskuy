@@ -46,10 +46,10 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="#about">About</a></li>
-                            <li><a href="#shop">Shop</a></li>
-                            <li><a href="#team">Team</a></li>
+                            <li class="{{ Route::currentRouteName() == 'shop.index' ? 'active' : '' }}"><a href="{{ route('shop.index') }}">Shop</a></li>
+                            <li class="{{ Route::currentRouteName() == 'feedback.index' ? 'active' : '' }}"><a href="{{ route('feedback.index') }}">History</a></li>
                             <li><a href="#review">Review</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
