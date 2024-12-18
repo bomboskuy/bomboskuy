@@ -79,7 +79,7 @@
                                     <a href="{{ route('feedback.create', $order->id) }}" class="btn btn-primary">Beri Feedback</a>
                                 @endif
                             @else <!-- Jika status belum completed -->
-                                <a href="#" class="btn btn-warning"> </a>
+                                <a href="#" class="btn btn-warning">lanjutkan pembayaran</a>
                             @endif
                         </td>
                     </tr>
