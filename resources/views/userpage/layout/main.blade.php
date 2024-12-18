@@ -222,7 +222,7 @@
                     <div class="team__item set-bg" data-setbg="{{ asset('asset/img/team/team-7.jpg')}}">
                         <div class="team__item__text">
                             <h6>Ahlul Mufi</h6>
-                            <span>Decorater</span>
+                            <span>434231078</span>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -236,7 +236,7 @@
                     <div class="team__item set-bg" data-setbg="{{ asset('asset/img/team/team-6.jpg')}}">
                         <div class="team__item__text">
                             <h6>Akbar Zahron</h6>
-                            <span>Decorater</span>
+                            <span>434231028</span>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
