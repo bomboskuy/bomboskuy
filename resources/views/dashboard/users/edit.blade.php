@@ -32,11 +32,6 @@
             </div>
 
             <div class="form-group">
-                <label for="password">Password (Kosongkan jika tidak ingin mengubah)</label>
-                <input type="password" name="password" id="password" class="form-control">
-            </div>
-
-            <div class="form-group">
                 <label for="roleID">Role</label>
                 <select name="roleID" id="roleID" class="form-control" required>
                     @foreach($roles as $role)
